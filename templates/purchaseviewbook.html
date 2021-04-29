@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %} addbook{% endblock title %}
+{% block style %}
+.ml-5{  
+  float:right;  
+}
+{% endblock style %}
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block body %}
+
+
+<div class="container my-2">
+<h1 class="text-center my-2">View PurchaseBook List</h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Bookid</th>
+      <th scope="col">BookName</th>
+      <th scope="col">BookPrice</th>
+      {% comment %} <th scope="col">Action</th> {% endcomment %}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      {% for items in posts %}
+     
+      <th scope="row">{{forloop.counter}}</th>
+      <th scope="row">{{items.name}}</th>
+      <td>{{items.bookprice}}</td>
+      {% comment %} <td><div>
+       <a class="btn btn-success btn-sm " href="edit/{{i.bookid}}" role="button">Edit</a> 
+       <a class="btn btn-warning btn-sm  " href="delete/{{i.bookid}}" role="button">Delete</a> 
+      </div></td>
+       {% endcomment %}
+    </tr>
+{% endfor %}
+   
+  </tbody>
+</table>
+<a class="btn btn-success ml-5 text-white btn-lg" href="/" role="button">back to home</a>
+{%	include	"pagination.html"	with	page=posts	%}
+<div>
+
+
+
+{% endblock body %}

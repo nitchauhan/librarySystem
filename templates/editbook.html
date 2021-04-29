@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Editbook{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center my-4 ">EditBook</h1>
+    <center>
+    <form method="post">
+    
+    {% csrf_token %}
+    {{edit_blog.as_p}}
+        
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+    </form>
+    </center>
+
+</div>
+
+{% endblock body %}

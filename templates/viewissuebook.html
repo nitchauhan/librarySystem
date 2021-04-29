@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %} viewissuebook{% endblock title %}
+{% block style %} 
+.ml-5{  
+  float:right;  
+}
+{% endblock style %}
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block body %}
+
+
+<div class="container my-2">
+<h1 class="text-center my-4">View issuebook List</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">BookId</th>
+      <th scope="col">BookName</th>
+      <th scope="col">BookAuthor</th>
+      {% comment %} <th scope="col">Booktype select</th> {% endcomment %}
+      <th scope="col">require date</th>
+      <th scope="col">Tenatative Return Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      {% for items in viewissue %}
+      <th scope="row">{{forloop.counter}}</th>
+      <th scope="row">{{items.name}}</th>
+      <td>{{items.author}}</td>
+      {% comment %} <td>{{items.category}}</td> {% endcomment %}
+      <td>{{items.require_date}}</td>
+      <td>{{items.Tenatative_Return_Date}}</td>
+      {% comment %} <td>{{items.bookdesc}}</td> {% endcomment %}
+    </tr>
+{% endfor %}
+   
+  </tbody>
+</table>
+<a class="btn btn-success ml-5 text-white btn-lg" href="/" role="button">back to home</a>
+<div>
+
+
+{% endblock body %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %} addbook{% endblock title %}
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block body %}
+
+<div class="container my-5">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">BookName</th>
+      <th scope="col">BookAuthor</th>
+      <th scope="col">bookType</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      {% for i in post %}
+      <th scope="row">{{post.bookid}}</th>
+      <td>{{post.name}}</td>
+      <td>{{post.author}}</td>
+      <td>{{post.category}}</td>
+    </tr>
+{% endfor %}
+   
+  </tbody>
+</table>
+<div>
+{% endblock body %}
+
+def search(request):
+    query = request.GET['query'].upper()
+    if len(query)>78:
+        allPosts = Book.objects.none()
+    else:
+        allPostsAuthor = Book.objects.all()
+        allPostsTitle = Book.objects.all()
+        allPostsContent = Book.objects.all()
+        allPosts = allPostsTitle.union(allPostsContent,allPostsAuthor)
+
+    if allPosts.count() == 0:
+         messages.warning(request,"No search Results found.Please refine Your query")
+    params = {'allPosts':allPosts, 'query':query}
+    return render(request,"search.html",params)
+

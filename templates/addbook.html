@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %} addbook{% endblock title %}
+{% block style %}
+.ml-5{  
+  float:right;  
+}
+{% endblock style %}
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block body %}
+
+<div class="container">
+    <h1>Addbook</h1>
+    <form method="post" action="/addbook">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputPassword1">BookName</label>
+            <input type="Name" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Authorname</label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="Enter your Author name"required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">bookprice</label>
+            <input type="text" class="form-control" id="bookprice" name="bookprice" placeholder="Enter your book price"required>
+        </div> 
+
+         <div class="form-group">
+         {% comment %} {% for i in post1 %} {% endcomment %}
+                <label for="exampleFormControlSelect1">Booktype select</label>
+                <select class="form-control" id="catchoice" name="category"required>
+                <option>Education</option>
+                <option>motivation</option>
+                <option>history</option> 
+                <option>entertainment</option>
+                <option>comics</option>
+                <option>biaogrphics</option>
+                </select>
+                {% comment %} <option>{{i.category}}</option> {% endcomment %}
+                {% comment %} {% endfor %} {% endcomment %}
+        </div>
+         <div class="form-group">
+            <label for="exampleFormControlTextarea1">About Book Description</label>
+            <textarea class="form-control" id="bookdesc"  name="bookdesc" rows="3"></textarea>
+        </div>
+         <div class="form-group">
+            <label for="exampleFormControlInput1">require date</label>
+            <input type="date" class="form-control" id="require_date" name="require_date" placeholder="Enter your require date">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Tenatative Return Date</label>
+            <input type="date" class="form-control" id="Tenatative_Return_Date" name="Tenatative_Return_Date" placeholder="Enter your Return date">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn btn-success btn-lg ml-5" href="/viewbook" role="button">viewbook</a>
+    </form>
+
+
+</div>
+
+
+
+
+{% endblock body %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %} issuebook{% endblock title %}
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center my-2">Issue Book</h1>
+    <form method="post" action="/issuebook">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputPassword1">BookName</label>
+            <input type="Name" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Authorname</label>
+            <input type="Name" class="form-control" id="author" name="author" placeholder="Enter your author name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">require date</label>
+            <input type="date" class="form-control" id="require_date" name="require_date" placeholder="Enter your require date"required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Tenatative Return Date</label>
+            <input type="date" class="form-control" id="Tenatative_Return_Date" name="Tenatative_Return_Date" placeholder="Enter your Return date"required>
+        </div>
+        <button type="submit" class="btn btn-primary mr-5">Submit</button>
+        
+        <a href="/viewissuebook" type="role" class="btn btn-danger">viewissuebook</a>
+    </form>
+
+
+
+</div>
+
+
+{% endblock body %}

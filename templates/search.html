@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %} search{% endblock title %}
+{% block blogactive %}active {% endblock blogactive %}
+
+{% block body %}
+
+<div class="container my-3">
+    <h2>Search By: {{query}}</h2>
+    {% if allPosts|length < 1 %}
+    <p>result not found</p>
+    Your Search query : <b>{{query}}</b> did not match any documents.<br>
+    <ul>
+    <li>Make Sure That All Wrds ARe spelled Correctly.</li>
+    <li>Try different Keywords</li>
+    <li> Try more general Keywords.</li>
+    <li>Try Fewer Keywords.</li>     
+    </ul>
+    {% endif %}
+    {% for post in allPosts %}
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+            <strong class="d-inline-block mb-2 text-primary">bookname: {{post.name}}</strong>
+            <h5 class="mb-0">
+                <a class="text-dark" href="#">auhorname :{{post.author}}</a>
+            </h5>
+            {% comment %} <div class="mb-1 text-muted">book type :{{post.category}}</div> {% endcomment %}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock body %}

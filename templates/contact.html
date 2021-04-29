@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} contact{% endblock title %}
+{% block contactactive %} active {% endblock contactactive %}
+{% block body %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://source.unsplash.com/500x150/?phone" alt="First slide">
+    </div>
+  </div>
+</div>
+<div class="container">
+    <h1 class="text-center text-capitalize text-danger">Contact To LibrarySystem</h1>
+    <form method="post" action="/contact">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputPassword1">Name</label>
+            <input type="Name" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Phone Number</label>
+            <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter Your phoneNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Describe your Issue:</label>
+            <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} Editbook{% endblock title %}
+{% block style %}
+.ml-5{  
+  float:right;  
+}
+{% endblock style %}
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center my-4">EditBook</h1>
+    <form method="post" action="/editbook">
+    
+    {% csrf_token %}
+    {{Edit_blog.as_p}}
+        {% for i in post5 %}
+        <div class="form-group id="booksid" ">
+            <label for="exampleInputPassword1" >BookName</label>
+            {% comment %} <label for="exampleInputPassword1">{{name}}</label> {% endcomment %}
+            <input type="Name" class="form-control" id="name" value="{{i.name}}" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Author Name</label>
+           
+            <input type="text" class="form-control" id="author" name="author" value="{{i.author}}"placeholder="Enter your Author name"required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <input type="hidden" value="{{ change.id }}" name="change_id" />
+        <a class="btn btn-success btn-lg ml-5" href="/viewbook" role="button">viewbook</a>
+        {% endfor %}
+    </form>
+
+
+</div>
+
+
+
+
+{% endblock body %}

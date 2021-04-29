@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} viewbook{% endblock title %}
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block style %}
+
+{% endblock style%}
+{% block js%}
+<script>
+let previews = document.getElementByclassName('preview');
+Array.from(previews).ForEach((element)=>{
+    element.innerHTML = element.innerText;
+})
+
+</script>
+
+{% endblock js %}
+{% block body %}
+
+<div class="container my-5">
+
+
+<div class="container-fluid my-3">
+    <h2 class="text-center my-3">view book list</h2>
+{%	include	"pagination.html"	with	page=posts	%}
+    {% for i in posts %}
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+            {% comment %} <strong class="d-inline-block mb-2 text-primary">Number: {{forloop.counter}}</strong> {% endcomment %}
+            <strong class="d-inline-block mb-2 text-primary">Articles by: {{i.author}}</strong>
+            <h3 class="mb-0">
+                
+                <a href="">{{i.title}} </a>
+            </h3>
+            {% comment %} <div class="mb-1 text-dark text-capitalize">bookId => <b>{{forloop.counter}}</b></div> {% endcomment %}
+            <div class="mb-1 text-dark text-capitalize">bookTitle => <b>{{i.name}}</b></div>
+            <div class="mb-1 text-dark text-capitalize">booktype => <b>{{i.category}}</b></div>
+            
+            <div class="mb-1 text-muted">{{i.timeStamp}}</div>
+            <div class="mb-1 text-muted"><b>price</b>.{{i.bookprice}}</div>
+            <p class="card-text mb-auto"><div class="preview">{{i.bookdesc|safe | truncatechars:137}}</div></p>
+           <div class="edit"><a class="btn btn-success btn-sm mb-4" href="edit/{{i.bookid}}" role="button">Edit</a> </div>
+           <div class="del"><a class="btn btn-warning btn-sm  " href="delete/{{i.bookid}}" role="button">Delete</a> </div>
+            <a class="btn btn-dark bd btn-sm mb-4 mt-4" href="/purchasebook/{{i.bookid}}" role="button">Purchase Book</a>
+         
+        </div>
+            </div>
+    {% endfor %}
+
+
+</div>
+{% endblock body %}
